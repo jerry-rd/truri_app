@@ -10,4 +10,9 @@ export const routes = [
     name: 'Login',
     component: () => import('../pages/Login/index.vue'), // 假设有一个 Login 组件
   },
+  {
+    path: '/loading',
+    name: 'Loading',
+    component: () => import('../pages/Login/loading.vue'),
+  },
 ]
