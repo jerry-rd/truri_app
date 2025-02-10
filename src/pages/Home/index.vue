@@ -28,7 +28,7 @@
   import { useRouter, useRoute } from 'vue-router'
   import autoRoutes from '@/router/autoRoutes'
   const router = useRouter()
-  const routers = [{ name: '登录', path: '/login' }, ...autoRoutes]
+  const routers = [{ name: '登录', path: '/login' }, { name: 'brain.js', path: '/brain' }, ...autoRoutes]
 </script>
 
 <style>

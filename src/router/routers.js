@@ -15,4 +15,9 @@ export const routes = [
     name: 'Loading',
     component: () => import('../pages/Login/loading.vue'),
   },
+  {
+    path: '/brain',
+    name: 'brain',
+    component: () => import('../pages/Brain/index.vue'),
+  },
 ]

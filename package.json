@@ -13,6 +13,7 @@
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-http": "^2.2.0",
     "@tauri-apps/plugin-opener": "^2",
+    "brain.js": "^2.0.0-beta.24",
     "jsencrypt": "^3.3.2",
     "qs": "^6.14.0",
     "vue": "^3.5.13",
