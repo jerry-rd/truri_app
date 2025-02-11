@@ -14,6 +14,7 @@ const testRouteMap = {
   Page11: '引导式访问driver组件的使用',
   Page12: 'plyr视频播放组件的使用',
   Page13: '图片放大镜显示效果',
+  Page14: '图片滚动加载，且砌体布局',
 }
 
 routes.forEach((item) => {
