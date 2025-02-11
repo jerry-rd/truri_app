@@ -20,4 +20,9 @@ export const routes = [
     name: 'brain',
     component: () => import('../pages/Brain/index.vue'),
   },
+  {
+    path: '/editor',
+    name: 'editor',
+    component: () => import('../pages/Editor/index.vue'),
+  },
 ]

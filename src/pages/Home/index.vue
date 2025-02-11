@@ -58,7 +58,10 @@
   import autoRoutes from '@/router/autoRoutes'
   const router = useRouter()
   const systemRouters = [{ name: '登录', path: '/login', meta: { title: '后台系统' } }]
-  const brainRouters = [{ name: 'brain.js', path: '/brain', meta: { title: '神经网络功能训练' } }]
+  const brainRouters = [
+    { name: 'brain.js', path: '/brain', meta: { title: '神经网络功能训练' } },
+    { name: 'Monaco Editor', path: '/editor', meta: { title: '代码编辑器' } },
+  ]
   const testRouter = [...autoRoutes]
   const allRouter = [...systemRouters, ...brainRouters, ...testRouter]
   const isTableView = ref(false)
