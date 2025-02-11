@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "顿雾智慧式用电监管平台",
+        "title": "测试平台就是玩",
         "minWidth": 1280,
         "minHeight": 760,
         "center": true,
