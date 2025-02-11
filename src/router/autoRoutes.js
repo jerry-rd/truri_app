@@ -12,6 +12,8 @@ const testRouteMap = {
   Page2: '旋转显示页面',
   Page10: '二维码生成',
   Page11: '引导式访问driver组件的使用',
+  Page12: 'plyr视频播放组件的使用',
+  Page13: '图片放大镜显示效果',
 }
 
 routes.forEach((item) => {
