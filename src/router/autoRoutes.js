@@ -15,6 +15,9 @@ const testRouteMap = {
   Page12: 'plyr视频播放组件的使用',
   Page13: '图片放大镜显示效果',
   Page14: '图片滚动加载，且砌体布局',
+  monaco: 'monaco代码编辑器',
+  aieditor: 'AiEditor 是一个面向 AI 的下一代富文本编辑器',
+  wangeditor: 'wangeditor编译器',
 }
 
 routes.forEach((item) => {

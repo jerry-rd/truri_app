@@ -11,7 +11,10 @@ export default defineConfig(async () => ({
     vue(),
     Pages({
       // 配置路由文件夹
-      dirs: [{ dir: 'src/pages/Test', baseRoute: 'test' }], // 你可以根据需要更改路径
+      dirs: [
+        { dir: 'src/pages/Test', baseRoute: 'test' },
+        { dir: 'src/pages/Editor', baseRoute: 'editor' },
+      ], // 你可以根据需要更改路径
     }),
   ],
   css: {
