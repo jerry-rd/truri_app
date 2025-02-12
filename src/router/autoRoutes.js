@@ -18,12 +18,19 @@ const testRouteMap = {
   monaco: 'monaco代码编辑器',
   aieditor: 'AiEditor 是一个面向 AI 的下一代富文本编辑器',
   wangeditor: 'wangeditor编译器',
+  Baidu: '百度地图',
+  Gaode: '高德地图',
+  Google: '谷歌地图',
+  Yandex: 'Yandex地图',
+  BaiduGL: '百度地图GL',
+  tianditu: '天地图',
 }
 
 routes.forEach((item) => {
   const fileName = item.name.split('-')[1]
   item.meta = {
     title: testRouteMap?.[fileName] || '',
+    parent: item?.name?.split('-')?.[0],
   }
 })
 
