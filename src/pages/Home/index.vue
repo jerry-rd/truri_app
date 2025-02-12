@@ -7,7 +7,7 @@
         <span v-else>切换到表格视图</span>
       </button>
     </div>
-    <div class="w-screen flex justify-center gap-4 p-4" v-if="!isTableView">
+    <div class="w-screen flex justify-center gap-4 p-4" v-if="isTableView">
       <table class="w-1/2 bg-white border border-gray-300 rounded-lg shadow-md mb-5 text-left">
         <thead>
           <tr class="bg-gray-200 text-gray-800">
@@ -46,7 +46,7 @@
         </div>
         <div class="flex justify-between items-center">
           <span class="text-sm text-gray-600">{{ r.path }}</span>
-          <router-link :to="r.path" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"> 访问 </router-link>
+          <router-link :to="r.path" class="px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"> 访问 </router-link>
         </div>
       </div>
     </div>

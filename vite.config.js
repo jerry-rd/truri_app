@@ -14,6 +14,7 @@ export default defineConfig(async () => ({
       dirs: [
         { dir: 'src/pages/Test', baseRoute: 'test' },
         { dir: 'src/pages/Editor', baseRoute: 'editor' },
+        { dir: 'src/pages/Map', baseRoute: 'map' },
       ], // 你可以根据需要更改路径
     }),
   ],

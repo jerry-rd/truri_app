@@ -10,7 +10,7 @@
     "opener:default",
     {
       "identifier": "http:default",
-      "allow": [{ "url": "http://*.sndtest.com" }],
+      "allow": [{ "url": "http://*.sndtest.com" },{"url": "http://*.baidu.com"}],
       "deny": [{ "url": "http://private.tauri.app" }]
     }
   ]
