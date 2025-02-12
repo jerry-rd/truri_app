@@ -64,6 +64,7 @@ export const MapManager = {
       baiduMap: 'vZGBPFRiVu94CE9SQjS5gTPH2Vy0PmWI',
       baiduMapGL: 'vZGBPFRiVu94CE9SQjS5gTPH2Vy0PmWI',
       yandexMap: '9be63d75-5531-4ad3-b6be-56ccd4388463',
+      tiandituMap: '0328abea5cc2f099719efea0cc5fbc04',
     }
     return akMap[type]
   },
@@ -83,6 +84,9 @@ export const MapManager = {
       }
       case 'aMap': {
         return { core: window.AMap }
+      }
+      case 'tiandituMap': {
+        return { core: window.T }
       }
       default: {
         return new Error('unknown namespace')
@@ -159,10 +163,26 @@ export const MapManager = {
         loadScript(`//api-maps.yandex.ru/2.1/?apikey=${ak}&lang=zh-CN&onload=yandexMapLoaded`)
       })
     },
+    async tiandituMap(type, ak = '0328abea5cc2f099719efea0cc5fbc04') {
+      MapManager.setStatus(type, 'loading')
+      await new Promise((resolve) => {
+        loadScript(`//api.tianditu.gov.cn/api?v=4.0&tk=${ak}&callback=onlineMapLoaded`)
+        const script = document.querySelector(`script[src*="tianditu.gov.cn"]`)
+        if (script) {
+          script.addEventListener('load', () => {
+            resolve()
+          })
+          script.addEventListener('error', (error) => {
+            console.error('Failed to load Tianditu map script:', error)
+          })
+        }
+      })
+      MapManager.setStatus(type, 'loaded')
+    },
   },
   /**
    *
-   * @param {('offlineMap' | 'baiduMap' | 'baiduMapGL'| 'googleMap' |'yandexMap'| 'aMap')} type
+   * @param {('offlineMap' | 'baiduMap' | 'baiduMapGL'| 'googleMap' |'yandexMap'| 'aMap'| 'tiandituMap')} type
    */
   async loadMap(type) {
     const config = MapManager.getAk(type)
@@ -204,5 +224,6 @@ export const MapManager = {
     baiduMap: 'unloaded',
     baiduMapGL: 'unloaded',
     yandexMap: 'unloaded',
+    tiandituMap: 'unloaded',
   },
 }
