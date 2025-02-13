@@ -32,15 +32,15 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 p-4" v-else>
       <div v-for="r in allRouter" :key="r.path" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300">
         <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center">
-            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+          <div class="flex items-center overflow-hidden">
+            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <div>
-              <h3 class="text-lg font-semibold text-gray-800">{{ r.name }}</h3>
-              <p class="text-sm text-gray-500">{{ r?.meta?.title }}</p>
+            <div class="flex-1 overflow-hidden">
+              <h3 class="text-base font-semibold text-gray-800 truncate">{{ r.name }}</h3>
+              <p class="w-full text-xs text-gray-500 truncate">{{ r?.meta?.title }}</p>
             </div>
           </div>
         </div>
