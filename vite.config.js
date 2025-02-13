@@ -17,6 +17,7 @@ export default defineConfig(async () => ({
         { dir: 'src/pages/Map', baseRoute: 'map' },
         { dir: 'src/pages/Style', baseRoute: 'Style' },
         { dir: 'src/pages/WebApi', baseRoute: 'WebApi' },
+        { dir: 'src/pages/tauri', baseRoute: 'tauri' },
       ], // 你可以根据需要更改路径
     }),
   ],
@@ -35,13 +36,7 @@ export default defineConfig(async () => ({
     port: 1420,
     strictPort: true,
     host: host || false,
-    hmr: host
-      ? {
-          protocol: 'ws',
-          host,
-          port: 1421,
-        }
-      : undefined,
+    hmr: host ? { protocol: 'ws', host, port: 1421 } : undefined,
     watch: {
       // 3. tell vite to ignore watching `src-tauri`
       ignored: ['**/src-tauri/**'],
