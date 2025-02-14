@@ -104,7 +104,7 @@
     console.log('登录结果:', res)
     const { code, data } = res
     if (code === '0') {
-      router.push('/loading')
+      router.push('/appTest/Login/loading')
     } else if (code === '1' && data.codeCheckFlag) {
       refreshCaptcha()
     }

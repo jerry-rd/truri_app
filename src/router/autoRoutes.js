@@ -39,7 +39,7 @@ const testRouteMap = {
 }
 
 routes.forEach((item) => {
-  const [parent, fileName] = item.name.split('-')
+  const [_, parent, fileName] = item.name.split('-')
   item.meta = {
     title: testRouteMap?.[parent]?.[fileName] || '',
     parent,

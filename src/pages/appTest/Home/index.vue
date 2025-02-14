@@ -57,10 +57,7 @@
   import { useRouter, useRoute } from 'vue-router'
   import autoRoutes from '@/router/autoRoutes'
   const router = useRouter()
-  const systemRouters = [{ name: '登录', path: '/login', meta: { title: '后台系统' } }]
-  const brainRouters = [{ name: 'brain.js', path: '/brain', meta: { title: '神经网络功能训练' } }]
-  const testRouter = [...autoRoutes]
-  const allRouter = [...systemRouters, ...brainRouters, ...testRouter]
+  const allRouter = [...autoRoutes]
   const isTableView = ref(false)
   const toggleView = () => {
     isTableView.value = !isTableView.value
