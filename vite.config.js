@@ -10,7 +10,7 @@ export default defineConfig(async () => ({
   plugins: [
     vue(),
     Pages({
-      // 配置路由文件夹
+      // 配置路由文件夹, 你可以根据需要更改路径,自动导入页面
       dirs: [
         { dir: 'src/pages/Test', baseRoute: 'test' },
         { dir: 'src/pages/Editor', baseRoute: 'editor' },
@@ -18,7 +18,7 @@ export default defineConfig(async () => ({
         { dir: 'src/pages/Style', baseRoute: 'Style' },
         { dir: 'src/pages/WebApi', baseRoute: 'WebApi' },
         { dir: 'src/pages/tauri', baseRoute: 'tauri' },
-      ], // 你可以根据需要更改路径
+      ],
     }),
   ],
   css: {
