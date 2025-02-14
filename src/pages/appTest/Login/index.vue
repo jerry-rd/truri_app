@@ -53,7 +53,7 @@
 <script setup>
   import { ref, onMounted, computed } from 'vue'
   // import { invoke } from '@tauri-apps/api/core'
-  import { getData, getIndividual, accountLogin } from '@/api/common'
+  import { getData, getIndividual, accountLogin } from '@/api/appTest/common'
   import { getJSEncrypt } from '@/libs/common'
   import { useRouter } from 'vue-router'
 

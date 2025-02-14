@@ -10,11 +10,69 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --bg-color: #f6f6f6;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
-    background-color: #2f2f2f;
+    background-color: #1e1f22;
+    --bg-color: #1e1f22;
+    --bg-color-2: #2b2d31;
+    --bg-color-3: #3c3f45;
+    --text-color: #f6f6f6;
+    --text-color-1: #c7c7c7;
+    --border-color: #1f364d;
+    /*  主题色 */
+    --theme-color: rgb(25, 118, 210);
+    --navbar-height: 48px;
+    --tags-height: 40px;
+    --menu-width: max(min(270px, 20vw), 230px);
+    /** 页面中的间隔，间距 */
+    --page-gap: 10px;
+    --bt-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0px 2px rgba(0, 0, 0, 0.9);
+    --bt-box-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0px 2px rgba(0, 0, 0, 0.9);
+    --box-shadow-2: 0 1px 0 hsl(0 calc(1 * 0%) 0.8% / 0.2), 0 1.5px 0 hsl(240 calc(1 * 7.7%) 2.5% / 0.05), 0 2px 0 hsl(0 calc(1 * 0%) 0.8% / 0.05);
   }
+}
+
+/**
+ * 公用的css
+ */
+html {
+  font-size: 14px;
+}
+
+body {
+  width: 100% !important;
+  margin: 0;
+  overflow: auto !important;
+  word-break: break-all; /* 强行换行 */
+  background-color: var(--bg-color);
+  color: var(--text-color); /* 去除默认的颜色和点击后变化的颜色 */
+  /** 解决ios上手机横屏导致的字体大小不一致 */
+  -webkit-text-size-adjust: 100%;
+}
+a {
+  text-align: left;
+  text-decoration: none;
+  outline: none; /* 去除旧版浏览器的点击后的外虚线框 */
+  color: var(--text-color); /* 去除默认的颜色和点击后变化的颜色 */
+}
+img {
+  vertical-align: bottom; /* 阻止图片出现下边距 */
+}
+* {
+  /* 去除移动端点击事件出现的背景框 */
+  -webkit-tap-highlight-color: transparent;
+}
+[v-cloak] {
+  display: none;
+}
+input[type='file']::-webkit-file-upload-button {
+  width: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  border: none;
 }

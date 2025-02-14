@@ -25,6 +25,9 @@
         },
         {
           "url": "http://*.baidu.com"
+        },
+        {
+          "url": "http://127.0.0.1:8000"
         }
       ],
       "deny": [
@@ -35,6 +38,7 @@
     },
     "os:default",
     "os:allow-hostname",
-    "store:default"
+    "store:default",
+    "notification:default"
   ]
 }

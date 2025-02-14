@@ -1,10 +1,8 @@
 import { fetch } from '@tauri-apps/plugin-http'
 import qs from 'qs'
 
-const baseUrl = 'http://v5.sndtest.com'
-
 const GET = async (url) => {
-  const response = await fetch(`${baseUrl}${url}`, {
+  const response = await fetch(`${url}`, {
     method: 'GET',
     credentials: 'include', // include, *same-origin, omit
   })
@@ -12,7 +10,7 @@ const GET = async (url) => {
 }
 
 const POST = async (url, data) => {
-  const response = await fetch(`${baseUrl}${url}`, {
+  const response = await fetch(`${url}`, {
     method: 'POST',
     body: qs.stringify(data),
     credentials: 'include', // include, *same-origin, omit
@@ -25,7 +23,7 @@ const POST = async (url, data) => {
 }
 
 const POST_JSON = async (url, data) => {
-  const response = await fetch(`${baseUrl}${url}`, {
+  const response = await fetch(`${url}`, {
     method: 'POST',
     body: JSON.stringify(data),
     credentials: 'include', // include, *same-origin, omit

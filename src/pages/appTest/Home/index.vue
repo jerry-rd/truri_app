@@ -39,13 +39,13 @@
               </svg>
             </div>
             <div class="flex-1 overflow-hidden">
-              <h3 class="text-base font-semibold text-gray-800 truncate">{{ r.name }}</h3>
+              <h3 class="text-base font-semibold text-gray-800 truncate">{{ r.name?.replace('appTest-', '') }}</h3>
               <p class="w-full text-xs text-gray-500 truncate">{{ r?.meta?.title }}</p>
             </div>
           </div>
         </div>
         <div class="flex justify-between items-center">
-          <span class="text-sm text-gray-600">{{ r.path }}</span>
+          <span class="text-sm text-gray-600 truncate flex-1">{{ r.path?.replace('/apptest', '') }}</span>
           <router-link :to="r.path" class="px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"> 访问 </router-link>
         </div>
       </div>
