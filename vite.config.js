@@ -24,6 +24,7 @@ export default defineConfig(async () => ({
         { dir: 'src/pages/appTest', baseRoute: 'appTest' },
         { dir: 'src/pages/admin', baseRoute: 'admin' },
       ],
+      extensions: ['vue'],
     }),
   ],
   css: {

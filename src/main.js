@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import 'element-plus/dist/index.css'
 
 import '@/assets/styles.css' // 确保导入了包含 Tailwind CSS 的样式文件
 

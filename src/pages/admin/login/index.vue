@@ -6,7 +6,7 @@
     <div class="img-bg">
       <el-image class="img" :src="img_4" fit="contain" />
     </div>
-    <h1>{{ dataContainer?.title }}</h1>
+    <h1 class="title text-4xl font-bold mb-5 animate-fade-in">{{ dataContainer?.title }}</h1>
     <div class="container">
       <div class="left">
         <el-carousel :interval="7000" arrow="never">
@@ -35,19 +35,7 @@
       </div>
       <div class="right">
         <div class="container">
-          <div class="title">登 录</div>
-          <div class="other-login-bt">
-            <div class="item">
-              <SvgIcon :style="'width:22px;height:22px;color:#fff;'" name="svg:g.svg"></SvgIcon>
-            </div>
-            <div class="item">
-              <SvgIcon :style="'width:22px;height:22px;color:#00b9f3;'" name="svg:f.svg"></SvgIcon>
-            </div>
-            <div class="item">
-              <SvgIcon :style="'width:22px;height:22px;color:#00c96e;'" name="svg:weixin.svg"></SvgIcon>
-            </div>
-          </div>
-          <div class="content-1">或使用您的账号</div>
+          <div class="title mb-10">登 录</div>
           <div class="input-container">
             <SvgIcon :style="'width:20px;height:20px;margin-right:10px;'" name="svg:zhanghao.svg"></SvgIcon>
             <el-input clearable placeholder="账号" @keyup.enter="onLogin" v-model="dataContainer.form.name" />
@@ -64,44 +52,69 @@
           <div class="bt-list">
             <el-button class="login-bt" v-if="!dataContainer.form.idU" :loading="dataContainer.loading" @click="onLogin"> 登 录 </el-button>
           </div>
+          <div class="content-1">或使用您的其他账号</div>
+          <div class="other-login-bt">
+            <div class="item">
+              <SvgIcon :style="'width:22px;height:22px;color:#fff;'" name="svg:g.svg"></SvgIcon>
+            </div>
+            <div class="item">
+              <SvgIcon :style="'width:22px;height:22px;color:#00b9f3;'" name="svg:f.svg"></SvgIcon>
+            </div>
+            <div class="item">
+              <SvgIcon :style="'width:22px;height:22px;color:#00c96e;'" name="svg:weixin.svg"></SvgIcon>
+            </div>
+          </div>
           <div class="other">
             <router-link to="/admin/register">没有账号？去注册</router-link>
           </div>
         </div>
       </div>
     </div>
-    <div class="bottom"> 版权所有 @admin.dumogu.top {{ dataContainer.name }} </div>
+    <div class="bottom"> 版权所有 @*******.top {{ dataContainer.name }} </div>
   </div>
 </template>
 
 <script setup>
   import { ref, onMounted } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
-  import { getAdminInit } from '@/api/admin/index'
+  import { getAdminInit, login } from '@/api/admin/index'
+  import Message from '@/libs/Message'
   import { ElMessage } from 'element-plus'
-  import { ask, confirm, message, open, save } from '@tauri-apps/plugin-dialog'
-
+  import md5 from 'md5'
   import img_2 from '@/assets/login-imgs/login-bg.svg'
   import img_3 from '@/assets/login-imgs/code.svg'
   import img_4 from '@/assets/login-imgs/login-bg-1.svg'
   import img_5 from '@/assets/login-imgs/login-bg-2.svg'
   import img_6 from '@/assets/login-imgs/login-bg-3.svg'
   import img_7 from '@/assets/login-imgs/login-bg-4.png'
-
+  const router = useRouter()
   const dataContainer = ref({
     title: '',
     name: '',
     form: { name: '', password: '', captchaText: '' },
   })
   const init = async () => {
-    const res = await getAdminInit()
-    if (res.code === 0) {
+    const { code, result, message } = await getAdminInit()
+    if (code === 0) {
+      dataContainer.value.title = result?.setting?.title
     } else {
-      message('接口异常', { title: '提示', kind: 'error' })
+      Message.error(message)
     }
   }
 
-  const onLogin = () => {}
+  const onLogin = async () => {
+    const params = {
+      password: md5(dataContainer.value.form.password),
+      username: dataContainer.value.form.name,
+    }
+    const { code, message } = await login(params)
+    if (code === 0) {
+      ElMessage({ message: '登录成功', type: 'success' })
+      router.push('/admin/main/index')
+    } else {
+      ElMessage({ message: message, type: 'error' })
+    }
+  }
 
   onMounted(() => {
     init()
@@ -139,6 +152,14 @@
           height: 100%;
         }
       }
+    }
+    > .title {
+      position: absolute;
+      top: 10vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      font-weight: bold;
     }
     > .container {
       position: relative;

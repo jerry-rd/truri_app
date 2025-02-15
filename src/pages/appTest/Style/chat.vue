@@ -3,14 +3,14 @@
     <div class="shadow-md p-4 text-center fixed w-full bg-white top-0 left-0 right-0">
       <h2 class="text-xl font-semibold text-gray-400">聊天</h2>
     </div>
-    <div class="p-4 no-scroll" ref="messages" style="max-height: calc(100vh - 74px); overflow-y: scroll; padding-top: 74px">
-      <div v-for="message in messages" :key="message.id" class="flex items-start mb-2" :class="{ 'justify-end': message.sender === '我', 'justify-start': message.sender !== '我' }">
-        <img v-if="message.sender !== '我'" src="https://picsum.photos/40/40?random=1" alt="用户头像" class="rounded-full mr-2 h-10 w-10 object-cover" />
+    <div class="p-4 no-scroll" ref="messagesRef" style="max-height: calc(100vh - 74px); overflow-y: scroll; padding-top: 74px">
+      <div v-for="message in messages" :key="message.id" class="flex items-start mb-2" :class="{ 'justify-end': message.sender === 'me', 'justify-start': message.sender !== 'me' }">
+        <img v-if="message.sender !== 'me'" src="https://picsum.photos/40/40?random=1" alt="用户头像" class="rounded-full mr-2 h-10 w-10 object-cover" />
         <div class="max-w-96">
           <div class="bg-blue-500 text-white rounded-lg p-2 ml-1"> {{ message.text }} </div>
           <div class="text-gray-300 text-sm ml-2">{{ message.time }}</div>
         </div>
-        <img v-if="message.sender === '我'" src="https://picsum.photos/40/40?random=1" alt="用户头像" class="rounded-full ml-2 h-10 w-10 object-cover" />
+        <img v-if="message.sender === 'me'" src="https://picsum.photos/40/40?random=1" alt="用户头像" class="rounded-full ml-2 h-10 w-10 object-cover" />
       </div>
     </div>
     <div class="flex p-4 bg-white border-t fixed bottom-0 left-0 right-0 w-full">
@@ -20,39 +20,45 @@
   </div>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        messages: [],
-        newMessage: '',
+<script setup>
+  import { ref, nextTick, onMounted } from 'vue'
+  import { chatCompletion } from '@/api/openai'
+
+  const messagesRef = ref(null)
+  const newMessage = ref('你是谁')
+  const messages = ref([])
+
+  const sendMessage = async () => {
+    if (newMessage.value.trim()) {
+      const content = newMessage.value
+      messages.value.push({ id: Date.now(), sender: 'me', text: content, time: new Date().toLocaleTimeString() })
+      newMessage.value = ''
+      const res = await chatCompletion(content)
+      console.log('🚀 ~ sendMessage ~ res:', res)
+      if (res?.choices?.[0]?.message?.content) {
+        messages.value.push({
+          id: Date.now(),
+          sender: 'ai',
+          text: res?.choices?.[0]?.message?.content,
+          time: new Date().toLocaleTimeString(),
+        })
       }
-    },
-    methods: {
-      sendMessage() {
-        if (this.newMessage.trim()) {
-          this.messages.push({
-            id: Date.now(),
-            sender: '我',
-            text: this.newMessage,
-            time: new Date().toLocaleTimeString(),
-          })
-          this.newMessage = ''
-          this.$nextTick(() => {
-            this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
-          })
-        }
-      },
-    },
+      nextTick(() => {
+        messagesRef.value.scrollTop = messagesRef.value.clientHeight
+      })
+    }
   }
+
+  onMounted(() => {
+    sendMessage()
+  })
 </script>
 
-<style scoped>
+<style scoped lang="less">
   .no-scroll {
     scrollbar-width: none;
   }
   .no-scroll::-webkit-scrollbar {
     display: none;
   }
-  /* 这里可以添加额外的样式，如果需要的话 */
 </style>

@@ -3,6 +3,11 @@ export const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../pages/appTest/Home/index.vue'), // 假设有一个 Home 组件
+    redirect: '/appTest/Home',
+  },
+  {
+    path: '/:pathMatch(.*)',
+    name: '404',
+    component: () => import('../pages/error/404.vue'),
   },
 ]

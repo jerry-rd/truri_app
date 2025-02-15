@@ -5,5 +5,5 @@ import autoRoutes from './autoRoutes'
 // 创建路由实例
 export default createRouter({
   history: createWebHistory(),
-  routes: [...routes, ...autoRoutes],
+  routes: [...autoRoutes, ...routes],
 })
