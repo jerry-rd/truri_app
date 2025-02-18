@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen bg-blue-50">
-    <h1 class="text-4xl font-bold text-gray-800 mb-5 animate-fade-in">欢迎使用本系统软件</h1>
+    <h1 class="text-4xl font-bold text-gray-800 mb-5 animate-fade-in mt-16">欢迎使用本系统软件</h1>
     <div class="mb-5 flex justify-end w-screen px-4">
       <button @click="toggleView" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center">
         <span v-if="isTableView">切换到卡片视图</span>
