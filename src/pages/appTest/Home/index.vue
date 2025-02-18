@@ -57,7 +57,7 @@
   import { useRouter, useRoute } from 'vue-router'
   import autoRoutes from '@/router/autoRoutes'
   const router = useRouter()
-  const allRouter = [...autoRoutes]
+  const allRouter = [...autoRoutes].sort((a, b) => a.meta.parent.localeCompare(b.meta.parent))
   const isTableView = ref(false)
   const toggleView = () => {
     isTableView.value = !isTableView.value

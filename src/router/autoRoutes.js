@@ -35,7 +35,18 @@ const testRouteMap = {
     PictureInPictureWindow: '画中画 API',
     selectAudioOutput: '音频输出设备 API（Audio Output Devices API）允许 Web 应用程序提示用户选择用于音频播放的输出设备。',
   },
-  Style: {},
+  Style: {
+    Iridescence: '背景渐变效果',
+    GradientText: '渐变文字',
+    Hyperspeed: '背景超速效果',
+    SplashCursor: '背景鼠标粒子效果背景',
+    DeviceCard: '设备卡片',
+    Aurora: '背景极光效果',
+    Balatro: '背景巴拉特罗效果',
+    Orb: '背景球体效果',
+    Waves: '背景波浪效果',
+    LiquidChrome: '背景液体效果',
+  },
 }
 
 routes.forEach((item) => {
