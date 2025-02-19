@@ -1,7 +1,7 @@
 import routes from 'virtual:generated-pages' // 自动生成的路由
 
 const testRouteMap = {
-  test: {
+  Test: {
     Page1: '测试页面1',
     Page9: '图片裁剪',
     Page8: '网站首页案例',
@@ -17,12 +17,12 @@ const testRouteMap = {
     Page13: '图片放大镜显示效果',
     Page14: '图片滚动加载，且砌体布局',
   },
-  editor: {
+  Editor: {
     monaco: 'monaco代码编辑器',
     aieditor: 'AiEditor 是一个面向 AI 的下一代富文本编辑器',
     wangeditor: 'wangeditor编译器',
   },
-  map: {
+  Map: {
     Baidu: '百度地图',
     Gaode: '高德地图',
     Google: '谷歌地图',
@@ -46,6 +46,14 @@ const testRouteMap = {
     Orb: '背景球体效果',
     Waves: '背景波浪效果',
     LiquidChrome: '背景液体效果',
+  },
+  tauri: {
+    store: 'tauri store',
+    dialog: 'tauri dialog',
+    notification: 'tauri notification',
+    api: 'tauri api',
+    fs: 'tauri fs',
+    osInfo: 'tauri osInfo',
   },
 }
 
