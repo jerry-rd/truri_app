@@ -25,6 +25,7 @@ export default defineConfig(async () => ({
       dirs: [
         { dir: 'src/pages/appTest', baseRoute: 'appTest' },
         { dir: 'src/pages/admin', baseRoute: 'admin' },
+        { dir: 'src/pages/dunwu', baseRoute: 'dunwu' },
       ],
       extensions: ['vue'],
     }),
@@ -36,18 +37,21 @@ export default defineConfig(async () => ({
       },
     },
   },
-  // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
-  // 1. prevent vite from obscuring rust errors
   clearScreen: false,
-  // 2. tauri expects a fixed port, fail if that port is not available
   server: {
     port: 1420,
     strictPort: true,
     host: host || false,
     hmr: host ? { protocol: 'ws', host, port: 1421 } : undefined,
     watch: {
-      // 3. tell vite to ignore watching `src-tauri`
       ignored: ['**/src-tauri/**'],
+    },
+    proxy: {
+      '/dunwu': {
+        target: 'http://devb-v5.sndtest.com/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/dunwu/, ''),
+      },
     },
   },
   resolve: {

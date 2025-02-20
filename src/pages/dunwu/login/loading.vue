@@ -6,12 +6,31 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
+  import { getGblInfo } from '@/api/dunwu/common'
+  import { useStore } from '@/hooks/useStore'
+
+  const { getStore, setStore, deleteStore } = useStore()
+
   const isLoading = ref(true) // Set to true to show loading initially
+
   const startLoading = () => {
     isLoading.value = true
   }
+
   const stopLoading = () => {
     isLoading.value = false
   }
+
+  const init = async () => {
+    const res = await getGblInfo()
+    if (res.code === 0) {
+      setStore('gblInfo', res.data)
+      deleteStore('account-info')
+    }
+  }
+
+  onMounted(() => {
+    init()
+  })
 </script>

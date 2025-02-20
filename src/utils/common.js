@@ -1,4 +1,4 @@
-import { getBpk } from '@/api/appTest/common'
+import { getBpk } from '@/api/dunwu/common'
 import { JSEncrypt } from 'jsencrypt'
 
 export const getJSEncrypt = async () => {

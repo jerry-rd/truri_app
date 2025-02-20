@@ -23,6 +23,12 @@
               <input type="checkbox" v-model="rememberPassword" class="form-checkbox" />
               <span class="ml-2 text-sm text-gray-700">记住密码</span>
             </label>
+            <label class="inline-flex items-center">
+              <input type="checkbox" v-model="autoLogin" class="form-checkbox" />
+              <span class="ml-2 text-sm text-gray-700">自动登录</span>
+            </label>
+          </div>
+          <div class="mb-6 flex justify-end items-center">
             <button class="text-blue-600 hover:underline" @click="handleForgotPassword">忘记密码？</button>
           </div>
           <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition duration-200"> 登录 </button>
@@ -52,11 +58,13 @@
 
 <script setup>
   import { ref, onMounted, computed } from 'vue'
-  // import { invoke } from '@tauri-apps/api/core'
-  import { getData, getIndividual, accountLogin } from '@/api/appTest/common'
-  import { getJSEncrypt } from '@/libs/common'
+  import { getIndividual, accountLogin } from '@/api/dunwu/common'
+  import { useStore } from '@/hooks/useStore'
+  import { getJSEncrypt } from '@/utils/common'
   import { useRouter } from 'vue-router'
+  import { ElMessage } from 'element-plus'
 
+  const { getStore, setStore, deleteStore } = useStore()
   const router = useRouter()
   const username = ref('')
   const password = ref('')
@@ -64,6 +72,7 @@
   const rememberPassword = ref(false)
   const captchaInput = ref('')
   const captchaUrl = ref('')
+  const autoLogin = ref(false)
 
   const backgroundStyle = computed(() => {
     const { loginPageBgImg } = pageConfig.value
@@ -89,36 +98,50 @@
   })
 
   function refreshCaptcha() {
-    captchaUrl.value = `http://v5.sndtest.com/portal/getCode.as?randomStr=${new Date().getTime()}`
+    captchaInput.value = ''
+    captchaUrl.value = import.meta.env.VITE_BASE_API + `/portal/getCode.as?randomStr=${new Date().getTime()}`
   }
 
   const handleLogin = async () => {
     const Encrypt = await getJSEncrypt()
-    const res = await accountLogin({
+    const params = {
       loginName: username.value,
       password: Encrypt.encrypt(password.value),
       edition: 'ESTATE_V5',
       checkCode: captchaInput.value,
       authLoginFlag: '',
-    })
-    console.log('登录结果:', res)
-    const { code, data } = res
+    }
+    const { code, data, message } = await accountLogin(params)
     if (code === '0') {
-      router.push('/appTest/Login/loading')
+      if (rememberPassword.value) {
+        setStore('account-info', { loginName: username.value, password: password.value, autoLogin: autoLogin.value, rememberPassword: rememberPassword.value })
+      } else {
+        deleteStore('account-info')
+      }
+      router.push('/dunwu/Login/loading')
     } else if (code === '1' && data.codeCheckFlag) {
       refreshCaptcha()
+      ElMessage({ message, type: 'error' })
     }
   }
-
   function handleScanLogin() {
     // 扫码登录逻辑
     console.log('扫码登录')
   }
-
   onMounted(async () => {
     const { data } = await getIndividual()
     pageConfig.value = data
-    refreshCaptcha()
+    // Check for stored credentials and auto-login
+    const storedInfo = await getStore('account-info')
+    if (storedInfo) {
+      username.value = storedInfo.loginName
+      password.value = storedInfo.password
+      autoLogin.value = storedInfo.autoLogin
+      rememberPassword.value = storedInfo.rememberPassword
+      if (storedInfo.autoLogin) {
+        handleLogin()
+      }
+    }
   })
 </script>
 
