@@ -12,6 +12,10 @@
         event.preventDefault()
         event.stopPropagation()
       }
+      /** 判断是不是黑色主题设置html 属性 */
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('class', 'dark')
+      }
       return {
         locale: zhCn,
       }

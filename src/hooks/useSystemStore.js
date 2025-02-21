@@ -1,6 +1,6 @@
 import { Store } from '@tauri-apps/plugin-store'
 
-export const useStore = (storeName = 'glb.json') => {
+export const useSystemStore = async (storeName = 'glb.json') => {
   let store
   const init = async () => {
     store = await Store.load(storeName)
@@ -14,6 +14,6 @@ export const useStore = (storeName = 'glb.json') => {
   const deleteStore = async (key) => {
     await store.delete(key)
   }
-  init()
+  await init()
   return { setStore, getStore, deleteStore }
 }

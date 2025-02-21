@@ -47,10 +47,10 @@ export default defineConfig(async () => ({
       ignored: ['**/src-tauri/**'],
     },
     proxy: {
-      '/dunwu': {
+      '/api': {
         target: 'http://devb-v5.sndtest.com/',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/dunwu/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },

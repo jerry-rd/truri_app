@@ -1,6 +1,7 @@
 import routes from 'virtual:generated-pages' // 自动生成的路由
 
 const testRouteMap = {
+  Brain: 'Brain训练',
   Test: {
     Page1: '测试页面1',
     Page9: '图片裁剪',
@@ -56,11 +57,12 @@ const testRouteMap = {
     osInfo: 'tauri osInfo',
   },
 }
+console.log('🚀 ~ routes.forEach ~ routes:', routes)
 
 routes.forEach((item) => {
   const [_, parent, fileName] = item.name.split('-')
   item.meta = {
-    title: testRouteMap?.[parent]?.[fileName] || '',
+    title: fileName ? testRouteMap?.[parent]?.[fileName] : testRouteMap?.[parent] || '待定义',
     parent,
   }
 })

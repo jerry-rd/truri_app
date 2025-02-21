@@ -55,6 +55,17 @@ body {
   /** 解决ios上手机横屏导致的字体大小不一致 */
   -webkit-text-size-adjust: 100%;
 }
+
+/* 添加全局滚动条样式 */
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
 a {
   text-align: left;
   text-decoration: none;

@@ -18,21 +18,19 @@
             <input type="text" v-model="captchaInput" required placeholder="验证码" class="p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black pr-16" />
             <img :src="captchaUrl" alt="Captcha" class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer" @click="refreshCaptcha" />
           </div>
-          <div class="mb-6 flex justify-between items-center">
+          <div class="mb-4 flex justify-between items-center">
             <label class="inline-flex items-center">
-              <input type="checkbox" v-model="rememberPassword" class="form-checkbox" />
-              <span class="ml-2 text-sm text-gray-700">记住密码</span>
+              <el-checkbox v-model="rememberPassword">记住密码</el-checkbox>
             </label>
             <label class="inline-flex items-center">
-              <input type="checkbox" v-model="autoLogin" class="form-checkbox" />
-              <span class="ml-2 text-sm text-gray-700">自动登录</span>
+              <el-checkbox v-model="autoLogin">自动登录</el-checkbox>
             </label>
           </div>
-          <div class="mb-6 flex justify-end items-center">
-            <button class="text-blue-600 hover:underline" @click="handleForgotPassword">忘记密码？</button>
+          <div class="mb-4 flex justify-end items-center">
+            <button type="button" class="text-blue-600 cursor-pointer" @click="handleForgotPassword">忘记密码？</button>
           </div>
-          <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition duration-200"> 登录 </button>
-          <button class="mt-4 w-full text-blue-600 hover:underline" @click="handleScanLogin">扫码登录</button>
+          <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition duration-200 cursor-pointer"> 登录 </button>
+          <button type="button" class="mt-4 w-full text-blue-600 cursor-pointer" @click="handleScanLogin">扫码登录</button>
         </form>
       </div>
       <footer class="mt-auto mb-4 text-sm text-gray-400 text-center absolute bottom-0">
@@ -59,12 +57,11 @@
 <script setup>
   import { ref, onMounted, computed } from 'vue'
   import { getIndividual, accountLogin } from '@/api/dunwu/common'
-  import { useStore } from '@/hooks/useStore'
+  import { useSystemStore } from '@/hooks/useSystemStore'
   import { getJSEncrypt } from '@/utils/common'
   import { useRouter } from 'vue-router'
   import { ElMessage } from 'element-plus'
 
-  const { getStore, setStore, deleteStore } = useStore()
   const router = useRouter()
   const username = ref('')
   const password = ref('')
@@ -113,6 +110,7 @@
     }
     const { code, data, message } = await accountLogin(params)
     if (code === '0') {
+      const { setStore, deleteStore } = await useSystemStore()
       if (rememberPassword.value) {
         setStore('account-info', { loginName: username.value, password: password.value, autoLogin: autoLogin.value, rememberPassword: rememberPassword.value })
       } else {
@@ -131,6 +129,7 @@
   onMounted(async () => {
     const { data } = await getIndividual()
     pageConfig.value = data
+    const { getStore } = await useSystemStore()
     // Check for stored credentials and auto-login
     const storedInfo = await getStore('account-info')
     if (storedInfo) {

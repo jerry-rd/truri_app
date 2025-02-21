@@ -8,12 +8,13 @@
 <script setup>
   import { ref, onMounted } from 'vue'
   import { getGblInfo } from '@/api/dunwu/common'
-  import { useStore } from '@/hooks/useStore'
+  import { useSystemStore } from '@/hooks/useSystemStore'
+  import store from '@/store'
 
-  const { getStore, setStore, deleteStore } = useStore()
+  const globalStore = store.useGlobalStore()
+  console.log('🚀 ~ globalStore:', globalStore)
 
   const isLoading = ref(true) // Set to true to show loading initially
-
   const startLoading = () => {
     isLoading.value = true
   }
@@ -23,10 +24,11 @@
   }
 
   const init = async () => {
+    const { setStore } = await useSystemStore()
     const res = await getGblInfo()
     if (res.code === 0) {
       setStore('gblInfo', res.data)
-      deleteStore('account-info')
+      globalStore.setInfo(res.data)
     }
   }
 

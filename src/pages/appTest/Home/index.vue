@@ -22,17 +22,48 @@
         </div>
       </div>
     </div>
+    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md w-full">
+      <el-tree :data="routerTree" :props="defaultProps" class="w-full" :expand-on-click-node="false" @node-click="handleNodeClick" />
+    </div>
   </div>
 </template>
 <script setup>
-  import { ref } from 'vue'
+  import { ref, computed, onMounted } from 'vue'
   import { useRouter, useRoute } from 'vue-router'
   import autoRoutes from '@/router/autoRoutes'
+
   const router = useRouter()
   const allRouter = [...autoRoutes].sort((a, b) => a.meta.parent.localeCompare(b.meta.parent))
-  const isTableView = ref(false)
-  const toggleView = () => {
-    isTableView.value = !isTableView.value
+
+  const routerTree = computed(() => {
+    const tree = []
+    const level1 = Array.from(new Set(autoRoutes.map((it) => it.name.split('-')[0])))
+    level1.forEach((v) => {
+      const node = { name: v, children: [] }
+      const level1Routes = autoRoutes.filter((it) => it.name.split('-')[0] === v)
+      const level2 = Array.from(new Set(level1Routes.map((it) => it.name.split('-')[1])))
+      level2.forEach((k) => {
+        const level2Node = { name: k, children: [] }
+        const level2Routes = level1Routes.filter((it) => it.name.split('-')[1] === k)
+        const level3 = Array.from(new Set(level2Routes.map((it) => it.name.split('-')[2])))
+        level2Node.children = level3.map((l) => ({
+          name: l,
+          path: level2Routes.find((r) => r.name.split('-')[2] === l)?.path || '',
+          meta: level2Routes.find((r) => r.name.split('-')[2] === l)?.meta || {},
+        }))
+        node.children.push(level2Node)
+      })
+      tree.push(node)
+    })
+    return tree
+  })
+
+  const defaultProps = { children: 'children', label: 'name' }
+
+  const handleNodeClick = (node) => {
+    if (node?.path) {
+      router.push(node.path)
+    }
   }
 </script>
 
