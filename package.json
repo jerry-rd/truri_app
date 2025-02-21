@@ -23,6 +23,7 @@
     "@tauri-apps/plugin-notification": "^2.2.1",
     "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-os": "^2.2.0",
+    "@tauri-apps/plugin-process": "^2.2.0",
     "@tauri-apps/plugin-store": "^2.2.0",
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
@@ -44,6 +45,7 @@
     "quill": "^2.0.3",
     "three": "^0.173.0",
     "vue": "^3.5.13",
+    "vue-i18n": "^10.0.5",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
