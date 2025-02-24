@@ -1,5 +1,7 @@
 <template>
-  <GradientText :colors="colors" :animationSpeed="animationSpeed" :showBorder="showBorder" :className="className"> 这里是需要动态渐变显示的文字 </GradientText>
+  <div class="flex justify-center items-center h-screen overflow-hidden">
+    <GradientText :colors="colors" :animationSpeed="animationSpeed" :showBorder="showBorder" :className="className"> 这里是需要动态渐变显示的文字 </GradientText>
+  </div>
 </template>
 
 <script setup>
