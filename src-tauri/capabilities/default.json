@@ -12,6 +12,7 @@
     "core:window:allow-start-dragging",
     "core:window:allow-minimize",
     "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
     "core:app:default",
     "core:resources:default",
     "core:menu:default",
@@ -24,6 +25,7 @@
     "os:allow-hostname",
     "store:default",
     "notification:default",
+    "process:default",
     {
       "identifier": "http:default",
       "allow": [
@@ -39,13 +41,7 @@
         {
           "url": "https://*.api.nvidia.com"
         }
-      ],
-      "deny": [
-        {
-          "url": "http://private.tauri.app"
-        }
       ]
-    },
-    "process:default"
+    }
   ]
 }

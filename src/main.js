@@ -9,9 +9,6 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/assets/style/common.css'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import { Window } from '@tauri-apps/api/window'
-
-const appWindow = new Window('main')
 
 function initApp() {
   const pinia = createPinia()
@@ -25,11 +22,4 @@ function initApp() {
   app.mount('#app')
 }
 
-function createTitleBar() {
-  document.getElementById('titlebar-minimize')?.addEventListener('click', () => appWindow.minimize())
-  document.getElementById('titlebar-maximize')?.addEventListener('click', () => appWindow.toggleMaximize())
-  document.getElementById('titlebar-close')?.addEventListener('click', () => appWindow.close())
-}
-
-createTitleBar()
 initApp()
