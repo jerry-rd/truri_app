@@ -1,6 +1,6 @@
 import AMapLoader from '@amap/amap-jsapi-loader'
 import { Loader } from '@googlemaps/js-api-loader'
-import { loadScript } from './common'
+import { loadScript } from '@/utils/common'
 
 /**
  * 谷歌地图样式以及初始化配置

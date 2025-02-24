@@ -1,23 +1,23 @@
 <template>
   <div class="mx-auto p-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div v-for="dev in list" class="device-card bg-white shadow-lg rounded-lg p-4 flex items-center transition-transform duration-200 hover:shadow-xl hover:scale-105 relative">
-        <img :src="dev?.deviceImage" alt="设备图片" class="w-32 h-32 object-cover rounded-md border border-gray-200 mr-4" />
+      <div v-for="dev in list" class="device-card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 flex items-center transition-transform duration-200 hover:shadow-xl hover:scale-101 relative">
+        <img :src="dev?.deviceImage" alt="设备图片" class="w-32 h-32 object-cover mr-4" />
         <div class="flex-1">
-          <h3 class="device-name text-xl font-bold text-gray-900 mb-1">{{ dev?.deviceName }}</h3>
-          <p class="device-address text-sm text-gray-600">
+          <h3 class="device-name text-xl font-bold text-gray-900 dark:text-white mb-1">{{ dev?.deviceName }}</h3>
+          <p class="device-address text-sm text-gray-600 dark:text-gray-400">
             地址: <span class="font-medium">{{ dev?.deviceAddress }}</span>
           </p>
-          <p class="device-id text-sm text-gray-600">
+          <p class="device-id text-sm text-gray-600 dark:text-gray-400">
             ID: <span class="font-medium">{{ dev?.deviceId }}</span>
           </p>
-          <div class="actions mt-2 flex space-x-2">
-            <button @click="onEdit" class="text-blue-600 hover:underline transition duration-150">编辑</button>
-            <button @click="onEdit" class="text-blue-600 hover:underline transition duration-150">详情</button>
-            <button @click="onDelete" class="text-red-600 hover:underline transition duration-150">删除</button>
+          <div class="actions mt-2 flex space-x-3">
+            <button @click="onEdit" class="text-blue-600 transition duration-150 cursor-pointer">编辑</button>
+            <button @click="onEdit" class="text-blue-600 transition duration-150 cursor-pointer">详情</button>
+            <button @click="onDelete" class="text-red-600 transition duration-150 cursor-pointer">删除</button>
           </div>
         </div>
-        <span :class="['absolute top-2 right-2 inline-block px-2 py-1 rounded-full text-white font-medium text-xs', statusClass(dev?.deviceStatus)]">
+        <span :class="['absolute top-4 right-4 inline-block px-2 py-1 rounded-full text-white font-medium text-xs', statusClass(dev?.deviceStatus)]">
           {{ dev?.deviceStatus }}
         </span>
       </div>
@@ -188,7 +188,7 @@
         return {
           'bg-green-500': deviceStatus === '在线',
           'bg-red-500': deviceStatus === '离线',
-          'bg-yellow-500': deviceStatus === '未知状态',
+          'bg-yellow-600': deviceStatus === '未知状态',
         }
       },
     },
