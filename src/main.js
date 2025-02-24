@@ -9,13 +9,27 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/assets/style/common.css'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import { Window } from '@tauri-apps/api/window'
 
-const pinia = createPinia()
-const app = createApp(App)
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
+const appWindow = new Window('main')
+
+function initApp() {
+  const pinia = createPinia()
+  const app = createApp(App)
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+  }
+  setupI18n(app)
+  app.use(pinia) // 使用pinia
+  app.use(router) // 使用路由
+  app.mount('#app')
 }
-setupI18n(app)
-app.use(pinia) // 使用pinia
-app.use(router) // 使用路由
-app.mount('#app')
+
+function createTitleBar() {
+  document.getElementById('titlebar-minimize')?.addEventListener('click', () => appWindow.minimize())
+  document.getElementById('titlebar-maximize')?.addEventListener('click', () => appWindow.toggleMaximize())
+  document.getElementById('titlebar-close')?.addEventListener('click', () => appWindow.close())
+}
+
+createTitleBar()
+initApp()

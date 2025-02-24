@@ -20,7 +20,7 @@
         "width": 1920,
         "height": 1080,
         "useHttpsScheme": true,
-        "decorations": true,
+        "decorations": false,
         "closable": true
       }
     ],
