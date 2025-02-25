@@ -18,7 +18,6 @@
   </div>
 </template>
 <script setup>
-  import { onMounted, onUnmounted, ref } from 'vue'
   import { MapManager, GOOGLE_MAP_CONFIG } from '@/libs/MapManager'
 
   let map = null

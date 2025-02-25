@@ -19,9 +19,7 @@
   </div>
 </template>
 <script setup>
-  import { onMounted, onUnmounted, ref } from 'vue'
   import { MapManager } from '@/libs/MapManager'
-
   let map = null
   let MapNameSpace = null
   let marker = null
@@ -29,7 +27,6 @@
   const lat = ref(39.90923)
   const address = ref('')
   const mapType = 'aMap'
-
   const loadMap = async () => {
     await MapManager.loadMap(mapType)
     const coreObj = MapManager.getNamespace(mapType)

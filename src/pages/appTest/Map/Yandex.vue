@@ -11,7 +11,6 @@
   </div>
 </template>
 <script setup>
-  import { onMounted, onUnmounted } from 'vue'
   import { MapManager, YANDEX_MAP_CONFIG } from '@/libs/MapManager'
 
   let map = null

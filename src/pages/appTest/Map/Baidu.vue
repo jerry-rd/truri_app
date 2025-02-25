@@ -19,9 +19,7 @@
   </div>
 </template>
 <script setup>
-  import { onMounted, onUnmounted, ref } from 'vue'
   import { MapManager } from '@/libs/MapManager'
-
   let map = null
   let MapNameSpace = null
   const lng = ref(113.386762)
