@@ -2,6 +2,7 @@
   import { ElConfigProvider } from 'element-plus'
   import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //启用element 中文
   import { Window } from '@tauri-apps/api/window'
+  import { useSidebarProvider } from '@/hooks/useSidebar'
 
   const appWindow = new Window('main')
   const locale = zhCn
@@ -14,6 +15,7 @@
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('class', 'dark')
   }
+  useSidebarProvider()
 </script>
 <template>
   <div data-tauri-drag-region class="title-bar">

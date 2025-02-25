@@ -5,7 +5,6 @@ import Pages from 'vite-plugin-pages'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import tailwindcss from '@tailwindcss/vite'
 
 const host = process.env.TAURI_DEV_HOST
 
@@ -13,7 +12,6 @@ const host = process.env.TAURI_DEV_HOST
 export default defineConfig(async () => ({
   plugins: [
     vue(),
-    tailwindcss(),
     AutoImport({
       // Auto import functions from Vue, e.g. ref, reactive, toRef...
       // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
