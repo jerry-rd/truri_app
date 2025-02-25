@@ -6,22 +6,22 @@
       <div class="flex space-x-4 mb-4">
         <div class="w-1/3">
           <label for="size" class="block font-medium mb-2">Size:</label>
-          <input id="size" v-model="size" type="number" placeholder="Size" class="p-2 border rounded-md shadow-sm w-full bg-transparent" />
+          <input id="size" v-model="size" type="number" placeholder="Size" class="p-2 border rounded-md shadow-2xs w-full bg-transparent" />
         </div>
         <div class="w-1/3">
           <label for="bgColor" class="block font-medium mb-2">Background Color:</label>
-          <input id="bgColor" v-model="bgColor" type="color" class="p-2 border rounded-md shadow-sm w-full" />
+          <input id="bgColor" v-model="bgColor" type="color" class="p-2 border rounded-md shadow-2xs w-full" />
         </div>
         <div class="w-1/3">
           <label for="fgColor" class="block font-medium mb-2">Foreground Color:</label>
-          <input id="fgColor" v-model="fgColor" type="color" class="p-2 border rounded-md shadow-sm w-full" />
+          <input id="fgColor" v-model="fgColor" type="color" class="p-2 border rounded-md shadow-2xs w-full" />
         </div>
       </div>
       <button @click="generateQRCode" class="bg-blue-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-500 transition duration-200"> Generate QR Code </button>
     </div>
     <div v-if="qrCodeUrl" class="w-full max-w-md mt-8">
       <h3 class="text-lg font-semibold mb-2">Generated QR Code:</h3>
-      <img :src="qrCodeUrl" :style="{ width: size + 'px', height: size + 'px' }" alt="QR Code" class="border rounded-md shadow-sm" />
+      <img :src="qrCodeUrl" :style="{ width: size + 'px', height: size + 'px' }" alt="QR Code" class="border rounded-md shadow-2xs" />
       <a :href="qrCodeUrl" download="qrcode.png" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-green-500 transition duration-200"> Download QR Code </a>
     </div>
   </div>

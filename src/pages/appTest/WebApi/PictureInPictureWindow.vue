@@ -9,7 +9,7 @@
       <source src="@/assets/video/冬景.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <button @click="togglePictureInPicture" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200"> 切换画中画 </button>
+    <button @click="togglePictureInPicture" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-xs shadow-xs hover:bg-blue-600 transition duration-200"> 切换画中画 </button>
   </div>
 </template>
 

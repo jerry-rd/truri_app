@@ -57,14 +57,15 @@ const testRouteMap = {
     osInfo: 'tauri osInfo',
   },
 }
-console.log('🚀 ~ routes.forEach ~ routes:', routes)
 
-routes.forEach((item) => {
+const adminRoutes = routes.filter((item) => !item.name.startsWith('admin-main-'))
+const mainRoutes = routes.filter((item) => item.name.startsWith('admin-main-'))
+adminRoutes.forEach((item) => {
   const [_, parent, fileName] = item.name.split('-')
-  item.meta = {
-    title: fileName ? testRouteMap?.[parent]?.[fileName] : testRouteMap?.[parent] || '待定义',
-    parent,
+  item.meta = { title: fileName ? testRouteMap?.[parent]?.[fileName] : testRouteMap?.[parent] || '待定义', parent }
+  if (item.name === 'admin-main') {
+    item.children = mainRoutes
   }
 })
 
-export default routes
+export default adminRoutes

@@ -5,7 +5,7 @@
       <span class="text-base font-normal text-gray-600">参考地址:</span>
       <a :href="apiUrl" class="text-base text-blue-600 hover:text-blue-800 hover:underline transition-colors truncate" target="_blank" rel="noopener noreferrer"> {{ apiUrl }} </a>
     </h1>
-    <button @click="selectAudioOutput" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200"> 选择音频播放 </button>
+    <button @click="selectAudioOutput" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-xs shadow-xs hover:bg-blue-600 transition duration-200"> 选择音频播放 </button>
   </div>
 </template>
 

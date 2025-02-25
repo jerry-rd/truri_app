@@ -8,14 +8,14 @@
           <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">登录</h2>
           <div class="mb-6 relative">
             <i class="fas fa-user text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-            <input type="text" id="username" v-model="username" required placeholder="用户名" class="pl-10 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black" />
+            <input type="text" id="username" v-model="username" required placeholder="用户名" class="pl-10 p-3 w-full border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-black" />
           </div>
           <div class="mb-6 relative">
             <i class="fas fa-lock text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-            <input type="password" id="password" v-model="password" required placeholder="密码" class="pl-10 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black" />
+            <input type="password" id="password" v-model="password" required placeholder="密码" class="pl-10 p-3 w-full border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-black" />
           </div>
           <div class="mb-6 relative" v-if="captchaUrl">
-            <input type="text" v-model="captchaInput" required placeholder="验证码" class="p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black pr-16" />
+            <input type="text" v-model="captchaInput" required placeholder="验证码" class="p-3 w-full border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-black pr-16" />
             <img :src="captchaUrl" alt="Captcha" class="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer" @click="refreshCaptcha" />
           </div>
           <div class="mb-4 flex justify-between items-center">
@@ -29,7 +29,7 @@
           <div class="mb-4 flex justify-end items-center">
             <button type="button" class="text-blue-600 cursor-pointer" @click="handleForgotPassword">忘记密码？</button>
           </div>
-          <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition duration-200 cursor-pointer"> 登录 </button>
+          <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md shadow-xs hover:bg-blue-700 transition duration-200 cursor-pointer"> 登录 </button>
           <button type="button" class="mt-4 w-full text-blue-600 cursor-pointer" @click="handleScanLogin">扫码登录</button>
         </form>
       </div>

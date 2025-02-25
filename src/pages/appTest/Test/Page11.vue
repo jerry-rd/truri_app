@@ -3,23 +3,23 @@
     <h1 class="text-2xl font-bold mb-4">Welcome to the Tour</h1>
     <button @click="startTour" class="bg-blue-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-500 transition duration-200 mb-4"> Start Tour </button>
     <div class="flex space-x-4">
-      <div id="feature1" class="p-4 border border-gray-300 rounded-md shadow-sm">
+      <div id="feature1" class="p-4 border border-gray-300 rounded-md shadow-2xs">
         <h2 class="text-lg font-semibold">第一步</h2>
         <p class="text-gray-600">Description of feature 1.</p>
       </div>
-      <div id="feature2" class="p-4 border border-gray-300 rounded-md shadow-sm">
+      <div id="feature2" class="p-4 border border-gray-300 rounded-md shadow-2xs">
         <h2 class="text-lg font-semibold">第二步</h2>
         <p class="text-gray-600">Description of feature 2.</p>
       </div>
-      <div id="feature3" class="p-4 border border-gray-300 rounded-md shadow-sm">
+      <div id="feature3" class="p-4 border border-gray-300 rounded-md shadow-2xs">
         <h2 class="text-lg font-semibold">第三步</h2>
         <p class="text-gray-600">Description of feature 2.</p>
       </div>
-      <div id="feature4" class="p-4 border border-gray-300 rounded-md shadow-sm">
+      <div id="feature4" class="p-4 border border-gray-300 rounded-md shadow-2xs">
         <h2 class="text-lg font-semibold">第四步</h2>
         <p class="text-gray-600">Description of feature 2.</p>
       </div>
-      <div id="feature5" class="p-4 border border-gray-300 rounded-md shadow-sm">
+      <div id="feature5" class="p-4 border border-gray-300 rounded-md shadow-2xs">
         <h2 class="text-lg font-semibold">第五步</h2>
         <p class="text-gray-600">Description of feature 2.</p>
       </div>

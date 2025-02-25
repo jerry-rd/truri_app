@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="[
-      'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 border-r border-gray-200',
+      'fixed mt-16 flex flex-col lg:mt-0 top-[30px] px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-99999 border-r border-gray-200',
       {
         'lg:w-[290px]': isExpanded || isMobileOpen || isHovered,
         'lg:w-[90px]': !isExpanded && !isHovered,
@@ -15,9 +15,9 @@
   >
     <div :class="['py-8 flex', !isExpanded && !isHovered ? 'lg:justify-center' : 'justify-start']">
       <router-link to="/">
-        <!-- <img v-if="isExpanded || isHovered || isMobileOpen" class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" width="150" height="40" /> -->
-        <!-- <img v-if="isExpanded || isHovered || isMobileOpen" class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" width="150" height="40" />
-        <img v-else src="/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" /> -->
+        <img v-if="isExpanded || isHovered || isMobileOpen" class="dark:hidden" src="@/assets/images/logo/logo.svg" alt="Logo" width="150" height="40" />
+        <img v-if="isExpanded || isHovered || isMobileOpen" class="hidden dark:block" src="@/assets/images/logo/logo-dark.svg" alt="Logo" width="150" height="40" />
+        <img v-else src="@/assets/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" />
       </router-link>
     </div>
     <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
@@ -90,7 +90,7 @@
         {
           icon: GridIcon,
           name: 'Dashboard',
-          subItems: [{ name: 'Ecommerce', path: '/', pro: false }],
+          subItems: [{ name: 'Ecommerce', path: '/admin/main/dashboard', pro: false }],
         },
         {
           icon: CalenderIcon,

@@ -5,8 +5,8 @@
       <span class="text-base font-normal text-gray-600">参考地址:</span>
       <a :href="apiUrl" class="text-base text-blue-600 hover:text-blue-800 hover:underline transition-colors truncate" target="_blank" rel="noopener noreferrer"> {{ apiUrl }} </a>
     </h1>
-    <button @click="pickColor" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200"> 选择颜色 </button>
-    <div v-if="color" :style="{ backgroundColor: color }" class="mt-4 w-24 h-24 rounded border border-gray-300 flex items-center justify-center">
+    <button @click="pickColor" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-xs shadow-xs hover:bg-blue-600 transition duration-200"> 选择颜色 </button>
+    <div v-if="color" :style="{ backgroundColor: color }" class="mt-4 w-24 h-24 rounded-xs border border-gray-300 flex items-center justify-center">
       <span class="text-lg text-gray-800">选中的颜色: {{ color }}</span>
     </div>
   </div>

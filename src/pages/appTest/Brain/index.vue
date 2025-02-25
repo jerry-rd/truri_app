@@ -3,9 +3,9 @@
     <h1 class="text-2xl font-bold dark:text-white mb-5">brain.js 正是这一趋势下的佼佼者，它不仅支持基本的神经网络功能，还具备良好的性能表现，能够在资源受限的设备上高效运行。 </h1>
     <h1 class="text-1xl font-bold dark:text-white mb-5">选择文件</h1>
     <div class="flex items-center gap-4">
-      <input type="file" accept=".json" @change="handleFileChange" class="border rounded px-4 py-2 h-10" />
-      <button @click="trainNetwork" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-10"> 训练网络 </button>
-      <button @click="stopTrain" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded h-10"> 停止训练 </button>
+      <input type="file" accept=".json" @change="handleFileChange" class="border rounded-xs px-4 py-2 h-10" />
+      <button @click="trainNetwork" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xs h-10"> 训练网络 </button>
+      <button @click="stopTrain" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xs h-10"> 停止训练 </button>
     </div>
     <div class="w-full max-w-lg mt-4">
       <div class="w-full bg-gray-200 rounded-full h-4">
@@ -17,9 +17,9 @@
       <p class="text-gray-700">已选择文件: {{ fileName }}</p>
     </div>
     <div class="mt-4 w-full max-w-lg">
-      <textarea v-model="inputText" placeholder="请输入要预测的文本..." class="w-full h-32 p-4 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none dark:text-white"></textarea>
+      <textarea v-model="inputText" placeholder="请输入要预测的文本..." class="w-full h-32 p-4 border rounded-lg shadow-2xs focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none dark:text-white"></textarea>
     </div>
-    <button @click="predictText" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"> 预测文本 </button>
+    <button @click="predictText" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xs"> 预测文本 </button>
   </div>
 </template>
 

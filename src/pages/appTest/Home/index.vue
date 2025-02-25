@@ -5,7 +5,7 @@
       <div v-for="r in allRouter" :key="r.path" class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center overflow-hidden">
-            <div class="w-10 h-10 dark:bg-blue-100 dark:text-blue-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+            <div class="w-10 h-10 dark:bg-blue-100 dark:text-blue-500 rounded-full flex items-center justify-center mr-3 shrink-0">
               <el-icon :size="20">
                 <List />
               </el-icon>
