@@ -58,13 +58,14 @@ const testRouteMap = {
   },
 }
 
-const adminRoutes = routes.filter((item) => !item.name.startsWith('admin-main-'))
+const adminRoutes = routes.filter((item) => !item.name.startsWith('admin-main-') && !item.name.startsWith('admin-component'))
 const mainRoutes = routes.filter((item) => item.name.startsWith('admin-main-'))
 adminRoutes.forEach((item) => {
   const [_, parent, fileName] = item.name.split('-')
   item.meta = { title: fileName ? testRouteMap?.[parent]?.[fileName] : testRouteMap?.[parent] || '待定义', parent }
   if (item.name === 'admin-main') {
     item.children = mainRoutes
+    item.redirect = '/admin/main/dashboard'
   }
 })
 

@@ -29,7 +29,7 @@ export default defineConfig(async () => ({
       // 配置路由文件夹, 你可以根据需要更改路径,自动导入页面
       dirs: [
         { dir: 'src/pages/appTest', baseRoute: 'appTest' },
-        { dir: 'src/pages/admin/main', baseRoute: 'admin/main' },
+        { dir: 'src/pages/admin', baseRoute: 'admin' },
         { dir: 'src/pages/dunwu', baseRoute: 'dunwu' },
       ],
       extensions: ['vue'],

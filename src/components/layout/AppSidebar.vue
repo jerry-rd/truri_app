@@ -67,7 +67,6 @@
           </div>
         </div>
       </nav>
-      <SidebarWidget v-if="isExpanded || isHovered || isMobileOpen" />
     </div>
   </aside>
 </template>
@@ -75,7 +74,6 @@
 <script setup>
   import { useRoute } from 'vue-router'
   import { GridIcon, CalenderIcon, UserCircleIcon, ChatIcon, MailIcon, DocsIcon, PieChartIcon, ChevronDownIcon, HorizontalDots, PageIcon, TableIcon, ListIcon, PlugInIcon } from '@/components/icons'
-  import SidebarWidget from './SidebarWidget.vue'
   import BoxCubeIcon from '@/components/icons/BoxCubeIcon.vue'
   import { useSidebar } from '@/hooks/useSidebar'
 
@@ -85,50 +83,50 @@
 
   const menuGroups = [
     {
-      title: 'Menu',
+      title: '菜单',
       items: [
         {
           icon: GridIcon,
-          name: 'Dashboard',
+          name: '工作台',
           subItems: [{ name: 'Ecommerce', path: '/admin/main/dashboard', pro: false }],
         },
         {
           icon: CalenderIcon,
-          name: 'Calendar',
-          path: '/calendar',
+          name: '日历',
+          path: '/admin/main/calendar',
         },
         {
           icon: UserCircleIcon,
-          name: 'User Profile',
-          path: '/profile',
+          name: '用户管理',
+          path: '/admin/main/UserProfile',
         },
 
         {
-          name: 'Forms',
+          name: '表单',
           icon: ListIcon,
           subItems: [{ name: 'Form Elements', path: '/form-elements', pro: false }],
         },
         {
-          name: 'Tables',
+          name: '表格',
           icon: TableIcon,
           subItems: [{ name: 'Basic Tables', path: '/basic-tables', pro: false }],
         },
         {
-          name: 'Pages',
+          name: '页面',
           icon: PageIcon,
           subItems: [
-            { name: 'Black Page', path: '/blank', pro: false },
-            { name: '404 Page', path: '/error-404', pro: false },
+            { name: 'Blank Page', path: '/admin/main/BlankPage', pro: false },
+            { name: '404 Page', path: '/admin/main/FourZeroFour', pro: false },
           ],
         },
       ],
     },
     {
-      title: 'Others',
+      title: '其他',
       items: [
         {
           icon: PieChartIcon,
-          name: 'Charts',
+          name: '图表',
           subItems: [
             { name: 'Line Chart', path: '/line-chart', pro: false },
             { name: 'Bar Chart', path: '/bar-chart', pro: false },
@@ -136,7 +134,7 @@
         },
         {
           icon: BoxCubeIcon,
-          name: 'Ui Elements',
+          name: 'UI元素',
           subItems: [
             { name: 'Alerts', path: '/alerts', pro: false },
             { name: 'Avatars', path: '/avatars', pro: false },
@@ -148,13 +146,12 @@
         },
         {
           icon: PlugInIcon,
-          name: 'Authentication',
+          name: '认证',
           subItems: [
             { name: 'Signin', path: '/signin', pro: false },
             { name: 'Signup', path: '/signup', pro: false },
           ],
         },
-        // ... Add other menu items here
       ],
     },
   ]

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen xl:flex">
+  <div class="relative xl:flex layout-container">
     <app-sidebar />
     <Backdrop />
     <div class="flex-1 transition-all duration-300 ease-in-out" :class="[isExpanded || isHovered ? 'lg:ml-[290px]' : 'lg:ml-[90px]']">
@@ -20,4 +20,9 @@
 </script>
 <style>
   @import './style/main.css';
+  .layout-container {
+    width: 100%;
+    height: calc(100vh - 30px);
+    overflow: auto;
+  }
 </style>

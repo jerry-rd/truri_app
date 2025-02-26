@@ -19,7 +19,7 @@
     <!-- Dropdown Start -->
     <div v-if="dropdownOpen" class="absolute -right-[240px] mt-[17px] flex h-[480px] w-[350px] flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark sm:w-[361px] lg:right-0">
       <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 dark:border-gray-800">
-        <h5 class="text-lg font-semibold text-gray-800 dark:text-white/90">Notification</h5>
+        <h5 class="text-lg font-semibold text-gray-800 dark:text-white/90">通知</h5>
         <button @click="closeDropdown" class="text-gray-500 dark:text-gray-400">
           <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -62,7 +62,7 @@
         class="mt-3 flex justify-center rounded-lg border border-gray-300 bg-white p-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
         @click="handleViewAllClick"
       >
-        View All Notification
+        查看所有通知
       </router-link>
     </div>
     <!-- Dropdown End -->
@@ -70,8 +70,8 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onUnmounted } from 'vue'
   import { RouterLink } from 'vue-router'
+  import userImage from '@/assets/images/user/user-02.jpg'
 
   const dropdownOpen = ref(false)
   const notifying = ref(true)
@@ -81,37 +81,37 @@
     {
       id: 1,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-02.jpg',
-      action: 'requests permission to change',
-      project: 'Project - Nganter App',
-      type: 'Project',
-      time: '5 min ago',
-      status: 'online',
+      userImage,
+      action: '请求更改权限',
+      project: '项目 - Nganter App',
+      type: '项目',
+      time: '5分钟前',
+      status: '在线',
     },
     {
       id: 2,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-03.jpg',
-      action: 'requests permission to change',
-      project: 'Project - Nganter App',
-      type: 'Project',
-      time: '5 min ago',
-      status: 'offline',
+      userImage,
+      action: '请求更改权限',
+      project: '项目 - Nganter App',
+      type: '项目',
+      time: '5分钟前',
+      status: '离线',
     },
     {
       id: 3,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-04.jpg',
-      action: 'requests permission to change',
-      project: 'Project - Nganter App',
-      type: 'Project',
-      time: '5 min ago',
-      status: 'online',
+      userImage,
+      action: '请求更改权限',
+      project: '项目 - Nganter App',
+      type: '项目',
+      time: '5分钟前',
+      status: '在线',
     },
     {
       id: 4,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-05.jpg',
+      userImage,
       action: 'requests permission to change',
       project: 'Project - Nganter App',
       type: 'Project',
@@ -121,7 +121,7 @@
     {
       id: 5,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-06.jpg',
+      userImage,
       action: 'requests permission to change',
       project: 'Project - Nganter App',
       type: 'Project',
@@ -131,7 +131,7 @@
     {
       id: 6,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-07.jpg',
+      userImage,
       action: 'requests permission to change',
       project: 'Project - Nganter App',
       type: 'Project',
@@ -141,7 +141,7 @@
     {
       id: 7,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-08.jpg',
+      userImage,
       action: 'requests permission to change',
       project: 'Project - Nganter App',
       type: 'Project',
@@ -151,7 +151,7 @@
     {
       id: 7,
       userName: 'Terry Franci',
-      userImage: '/images/user/user-09.jpg',
+      userImage,
       action: 'requests permission to change',
       project: 'Project - Nganter App',
       type: 'Project',
